@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eclipse</title>
+            <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+        body {
+            background-color: rgb(5,5,5);
+            margin: 0;
+            color: white;
+            font-family: Roboto Mono, monospace;
+            height: 100dvh;
+            overflow: hidden;
+            padding: 0;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* old Edge */
+  user-select: none;         /* standard */
+        }
+
+        .container {
+            height: 100%; 
+            width: 100vw; 
+            display: flex; 
+        }
+
+        .sidebar {
+            border-right: 1px solid rgb(20,20,20);
+            background-color: rgb(10,10,10); 
+            width: 56px;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main {
+            height: 100vh; 
+            background-color: rgb(15,15,15);
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+        .topbar {
+            border-bottom: 1px solid rgb(20,20,20);
+            height: 45px; 
+            background-color: rgb(10,10,10);
+            display: flex;
+            align-items: center;
+        }
+        .topbuttons {
+            padding: 10px;
+        }
+        .sidebuttons {
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .sidetools {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .sidetools img {
+            width: 24px; height: 24px;
+        }
+        #tabs-1 {
+            width: 40px;
+            display:flex;
+            flex: 1;
+            
+        }
+        .toptools {
+            width:25px;
+        }
+
+        .tools {
+            border: none;
+            background: none;
+        }
+        .tools img {
+            background: none;
+        }
+        .tools:hover {
+            background: none;
+            pointer-events: none;
+        }
+        .toptools img {
+            width: 15px;height: 15px;
+        }
+        .bar {
+            flex: 1;
+            height: 30px;
+            background-color: rgb(20,20,20);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgb(60,60,60);
+            border-radius: 10px;
+        }
+        .bar input {
+            background: none;
+            border: none;
+            color: white;
+            font-family: Roboto Mono, monospace;
+            font-size: 14px;
+            padding: 0px 10px;
+            flex: 1;
+            font-size: 80%;
+        }
+        input:focus {
+            outline: none;
+        }
+        #canvas {
+            display:flex;
+            flex: 1;
+        }
+    </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <aside class="sidebar">
+                <div class="sidebuttons">
+                <button class="sidetools tools" id="home"><img src="home.svg"></button>
+                <button class="sidetools tools" id="side"><img src="side.svg"></button>
+                </div>
+                <div class="side-s" style="width: 24px; height: 5px; display: flex; align-items: center; justify-content: center; margin-top: 2px; margin-bottom: 2px;">
+    <img src="line.png" style="width: 24px; height: 5px;"></div>
+                <div id="tabs-1">
+                
+                </div>
+                <div class="side-s" style="width: 24px; height: 5px; display: flex; align-items: center; justify-content: center; margin-top: 2px; margin-bottom: 2px;">
+    <img src="line.png" style="width: 24px; height: 5px;"></div>
+                <div class="sidebuttons">
+                <button class="sidetools tools" id="games"><img src="game.png"></button>
+                <button class="sidetools tools" id="apps"><img src="apps.png"></button>
+                <button class="sidetools tools" id="ai"><img src="ai.png"></button>
+                <button class="sidetools tools" id="music"><img src="music.png"></button>
+                <button class="sidetools tools" id="movie"><img src="movie.png"></button>
+                </div>
+            </aside>
+        <main class="main">
+            <div class="topbar">
+                <div class="topbuttons">
+                    <button class="toptools tools" id="back"><img src="arrow-left.svg"></button>
+                <button class="toptools tools" id="foward"><img src="arrow-right.svg"></button>
+                <button class="toptools tools" id="refresh"><img src="refresh-cw.svg"></button>
+                </div>
+                <div class="bar">
+                    <input type="text" value="eclipse://newtab" id="url" autocapitalize="off" spellcheck="false" autocomplete="off" autocorrect="off">
+                </div>
+                <div class="topbuttons">
+                    <button class="toptools tools" id="games"><img src="game.png"></button>
+                    <button class="toptools tools" id="ai"><img src="ai.png"></button>
+                    <button class="toptools tools" id="chat"><img src="msg.svg"></button>
+                    <button class="toptools tools" id="more"><img src="more.svg"></button>
+                </div>
+            </div>
+            <canvas id="canvas"></canvas>
+        </main>
+        </div>
+
+        <script></script>
+        
+
+
+
+    </body>
+</html>

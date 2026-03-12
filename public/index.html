@@ -1,0 +1,330 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Eclipse</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <script src="/scram/scramjet.all.js"></script>
+    <script src="/baremux/index.js"></script>
+
+    <link rel="stylesheet" href="index.css" />
+    <script src="config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" id="sidebar">
+        <div class="side-rail">
+          <div class="side-top">
+            <button class="icon-btn" id="home-btn" title="Home">
+              <img src="Eclipse-2/home.svg" alt="" />
+            </button>
+            <button class="icon-btn" id="sidebar-toggle" title="Tabs">
+              <img src="Eclipse-2/side.svg" alt="" />
+            </button>
+          </div>
+          <div class="side-divider">
+            <img src="Eclipse-2/line.png" alt="" />
+            </div>
+            <div class="tab-dots" id="tab-dots"></div>
+            <button class="icon-btn plus-btn" id="new-tab-btn" title="New Tab">+</button>
+            <div class="side-divider">
+              <img src="Eclipse-2/line.png" alt="" />
+            </div>
+          <div class="side-actions">
+            <button class="icon-btn" data-nav="games" title="Games">
+              <img src="Eclipse-2/game.png" alt="" />
+            </button>
+            <button class="icon-btn" data-nav="apps" title="Apps">
+              <img src="Eclipse-2/apps.png" alt="" />
+            </button>
+            <button class="icon-btn" data-nav="ai" title="AI">
+              <img src="Eclipse-2/ai.png" alt="" />
+            </button>
+            <button class="icon-btn" data-nav="music" title="Music">
+              <img src="Eclipse-2/music.png" alt="" />
+            </button>
+            <button class="icon-btn" data-nav="movies" title="Movies">
+              <img src="Eclipse-2/movie.png" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="side-expanded">
+          <div class="side-section">
+            <div class="side-section-title">Tabs</div>
+            <div class="tab-list" id="tab-list"></div>
+          </div>
+          <div class="side-section">
+            <button class="folder-toggle" id="favorites-toggle" type="button">
+              <span>Favorites</span>
+              <span class="chev">></span>
+            </button>
+            <div class="favorites-list" id="favorites-list"></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="top-left">
+            <button class="icon-btn" id="back-btn" title="Back">
+              <img src="Eclipse-2/arrow-left.svg" alt="" />
+            </button>
+            <button class="icon-btn" id="forward-btn" title="Forward">
+              <img src="Eclipse-2/arrow-right.svg" alt="" />
+            </button>
+            <button class="icon-btn" id="refresh-btn" title="Refresh">
+              <img src="Eclipse-2/refresh-cw.svg" alt="" />
+            </button>
+          </div>
+          <div class="address-bar">
+            <input
+              id="url-input"
+              type="text"
+              placeholder="Search or enter URL..."
+              autocapitalize="off"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+            />
+          </div>
+          <div class="top-right">
+            <button class="icon-btn" id="games-btn-top" title="Games">
+              <img src="Eclipse-2/game.png" alt="" />
+            </button>
+            <button class="icon-btn" id="ai-btn-top" title="AI">
+              <img src="Eclipse-2/ai.png" alt="" />
+            </button>
+            <button class="icon-btn" id="chat-btn-top" title="Chat">
+              <img src="Eclipse-2/msg.svg" alt="" />
+            </button>
+            <button class="icon-btn" id="more-btn" title="More">
+              <img src="Eclipse-2/more.svg" alt="" />
+            </button>
+          </div>
+        </header>
+
+        <div class="content" id="content">
+          <div id="internal-view">
+            <section class="view active" data-view="newtab">
+              <div class="hero">
+                <div class="hero-title">Eclipse Hub</div>
+                <form class="hero-search" id="newtab-form">
+                  <input
+                    id="newtab-search"
+                    type="text"
+                    placeholder="Search or enter URL..."
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    spellcheck="false"
+                  />
+                </form>
+              </div>
+              <div class="shortcut-block">
+                <div class="section-title">Shortcuts</div>
+                <div class="shortcut-grid" id="shortcut-grid"></div>
+              </div>
+            </section>
+
+            <section class="view" data-view="games">
+              <div class="view-header">
+                <h2>Games</h2>
+                <p>Pick a game to launch.</p>
+              </div>
+              <div class="card-grid" id="games-grid"></div>
+            </section>
+
+            <section class="view" data-view="apps">
+              <div class="view-header">
+                <h2>Apps</h2>
+                <p>Pick an app to open.</p>
+              </div>
+              <div class="card-grid" id="apps-grid"></div>
+            </section>
+
+            <section class="view" data-view="ai">
+              <div class="view-header">
+                <h2>AI</h2>
+                <p>Coming soon.</p>
+              </div>
+              <div class="empty-state">AI tools will live here.</div>
+            </section>
+
+            <section class="view" data-view="chat">
+              <div class="view-header">
+                <h2>Chat</h2>
+                <p>Coming soon.</p>
+              </div>
+              <div class="empty-state">Chat is on the way.</div>
+            </section>
+
+            <section class="view" data-view="bookmarks">
+              <div class="view-header">
+                <h2>Bookmarks</h2>
+                <p>Organize your saved links.</p>
+              </div>
+              <div class="bookmark-columns">
+                <div class="bookmark-column">
+                  <div class="section-title">Favorites</div>
+                  <div class="bookmark-list" id="bookmark-favorites"></div>
+                </div>
+                <div class="bookmark-column">
+                  <div class="section-title">All Bookmarks</div>
+                  <div class="bookmark-list" id="bookmark-list"></div>
+                </div>
+              </div>
+              <form class="bookmark-form" id="bookmark-form">
+                <input type="text" id="bookmark-title" placeholder="Title" required />
+                <input type="url" id="bookmark-url" placeholder="https://..." required />
+                <select id="bookmark-folder">
+                  <option value="favorites">Favorites</option>
+                  <option value="bookmarks">Bookmarks</option>
+                </select>
+                <button type="submit" class="primary">Add</button>
+              </form>
+            </section>
+
+            <section class="view" data-view="extensions">
+              <div class="view-header">
+                <h2>Extensions</h2>
+                <p>Run custom scripts after pages load.</p>
+              </div>
+              <div class="extension-list" id="extension-list"></div>
+              <form class="extension-form" id="extension-form">
+                <input type="text" id="extension-name" placeholder="Name" required />
+                <input
+                  type="text"
+                  id="extension-match"
+                  placeholder="Match URL (example.com or /regex/)"
+                  required
+                />
+                <textarea
+                  id="extension-code"
+                  rows="5"
+                  placeholder="JavaScript to run after page load"
+                  required
+                ></textarea>
+                <button type="submit" class="primary">Add Extension</button>
+              </form>
+            </section>
+
+            <section class="view" data-view="music">
+              <div class="view-header">
+                <h2>Music</h2>
+                <p>Set a music URL in config.js to launch.</p>
+              </div>
+            </section>
+
+            <section class="view" data-view="movies">
+              <div class="view-header">
+                <h2>Movies</h2>
+                <p>Set a movies URL in config.js to launch.</p>
+              </div>
+            </section>
+
+            <section class="view" data-view="settings">
+              <div class="view-header">
+                <h2>Settings</h2>
+                <p>Device spoofing and tools.</p>
+              </div>
+              <div class="settings-grid">
+                <div class="settings-card">
+                  <div class="section-title">Device Spoof</div>
+                  <select id="device-spoof">
+                    <option value="default">Default</option>
+                    <option value="desktop">Desktop</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="tablet">Tablet</option>
+                  </select>
+                  <div class="helper-text">Applies to proxied pages when possible.</div>
+                </div>
+                <div class="settings-card">
+                  <div class="section-title">Console</div>
+                  <button class="primary" id="console-toggle" type="button">Open Console</button>
+                  <label class="checkbox">
+                    <input type="checkbox" id="console-ignore" />
+                    Ignore page logs (keep command output)
+                  </label>
+                </div>
+              </div>
+
+              <div class="console-panel" id="console-panel" aria-hidden="true">
+                <div class="console-tabs">
+                  <button class="console-tab active" data-console-tab="console">Console</button>
+                  <button class="console-tab" data-console-tab="elements">Elements</button>
+                  <button class="console-tab" data-console-tab="sources">Sources</button>
+                  <button class="console-tab" data-console-tab="network">Network</button>
+                </div>
+                <div class="console-body">
+                  <div class="console-view active" data-console-view="console">
+                    <div class="console-log" id="console-log"></div>
+                    <form class="console-form" id="console-form">
+                      <span class="console-prompt">></span>
+                      <input id="console-input" type="text" placeholder="Run JavaScript..." />
+                      <button class="ghost" type="submit">Run</button>
+                    </form>
+                  </div>
+                  <div class="console-view" data-console-view="elements">
+                    <pre class="code-block" id="elements-view">Open a page to inspect its DOM.</pre>
+                  </div>
+                  <div class="console-view" data-console-view="sources">
+                    <div class="empty-state" id="sources-view">Sources view is not available yet.</div>
+                  </div>
+                  <div class="console-view" data-console-view="network">
+                    <div class="empty-state" id="network-view">Network view is not available yet.</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="frame-host"></div>
+        </div>
+      </main>
+    </div>
+
+    <div class="menu" id="more-menu" aria-hidden="true">
+      <button data-action="new-tab">New Tab</button>
+      <button data-action="close-tab">Close Tab</button>
+      <button data-action="close-all">Close All Tabs</button>
+      <div class="menu-divider"></div>
+      <button data-action="zoom-in">Zoom In</button>
+      <button data-action="zoom-out">Zoom Out</button>
+      <button data-action="full-screen">Full Screen</button>
+      <div class="menu-divider"></div>
+      <button data-action="extensions">Extensions</button>
+      <button data-action="bookmarks">Bookmarks</button>
+      <div class="menu-divider"></div>
+      <button data-action="shortcut-games">Games</button>
+      <button data-action="shortcut-ai">AI</button>
+      <button data-action="shortcut-music">Music</button>
+      <button data-action="shortcut-movies">Movies</button>
+      <button data-action="shortcut-apps">Apps</button>
+      <div class="menu-divider"></div>
+      <button data-action="copy-url">Copy URL</button>
+      <button data-action="settings">Settings</button>
+    </div>
+
+    <div class="modal" id="shortcut-modal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-title">Add Shortcut</div>
+        <form id="shortcut-form">
+          <input type="text" id="shortcut-title" placeholder="Label" required />
+          <input type="url" id="shortcut-url" placeholder="https://..." required />
+          <div class="modal-actions">
+            <button type="button" class="ghost" data-close="shortcut">Cancel</button>
+            <button type="submit" class="primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </body>
+</html>
