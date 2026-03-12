@@ -63,6 +63,17 @@ Resources for self-hosting:
 - https://docs.titaniumnetwork.org/guides/vps-hosting/
 - https://docs.titaniumnetwork.org/guides/dns-setup/
 
+## Cloudflare Worker Front Door
+
+This project cannot run entirely inside a Cloudflare Worker as-is because it relies on a Node.js HTTP server plus raw TCP/UDP sockets for Wisp. Cloudflare Workers only accept HTTP/WebSocket requests, do not allow inbound TCP sockets, and Node.js compatibility is a subset with some APIs missing or stubbed. Use the included Worker as a reverse proxy in front of a normal Node server instead.
+
+### Steps
+
+1. Deploy this Node server on a VM/container and make it reachable over HTTPS (for example, `https://origin.example.com`).
+2. Update `ORIGIN_URL` in `wrangler.toml` to point at your origin.
+3. Deploy the Worker with Wrangler (`wrangler deploy`).
+4. Attach your custom domain to the Worker in the Cloudflare dashboard.
+
 ### HTTP Transport
 
 The example uses [libcurl-transport](https://github.com/MercuryWorkshop/libcurl-transport) to fetch proxied data encrypted.
